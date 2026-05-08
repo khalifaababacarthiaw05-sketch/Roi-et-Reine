@@ -156,12 +156,13 @@
       background: var(--dark-3);
       border: 1px solid rgba(201,168,76,0.2);
       border-radius: 4px;
-      padding: 40px 40px 32px;
+      padding: 56px 40px 52px;
       box-shadow:
         0 0 0 1px rgba(201,168,76,0.05),
         0 40px 80px rgba(0,0,0,0.6),
         inset 0 1px 0 rgba(201,168,76,0.1);
       position: relative; overflow: hidden;
+      text-align: center;
     }
     .form-card::before {
       content: '';
@@ -172,12 +173,94 @@
     .form-card-label {
       font-size: 10px; letter-spacing: 4px;
       text-transform: uppercase; color: var(--gold);
-      margin-bottom: 24px; display: block;
+      margin-bottom: 32px; display: block;
     }
 
-    .form-card iframe {
-      width: 100%; border: none; display: block;
-      min-height: 1500px; background: transparent;
+    .form-card-icon {
+      font-size: 48px;
+      display: block;
+      margin-bottom: 24px;
+      animation: floatCrown 3s ease-in-out infinite;
+    }
+
+    .form-card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .form-card-desc {
+      font-size: 13px;
+      color: var(--white-dim);
+      line-height: 1.8;
+      margin-bottom: 40px;
+      max-width: 380px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .vote-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 48px;
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: color 0.4s ease;
+    }
+
+    .vote-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gold);
+      transform: translateX(-100%);
+      transition: transform 0.4s ease;
+      z-index: 0;
+    }
+
+    .vote-btn:hover::before {
+      transform: translateX(0);
+    }
+
+    .vote-btn:hover {
+      color: var(--dark);
+    }
+
+    .vote-btn span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .vote-btn-icon {
+      position: relative;
+      z-index: 1;
+      font-size: 16px;
+      transition: transform 0.3s ease;
+    }
+
+    .vote-btn:hover .vote-btn-icon {
+      transform: translateX(4px);
+    }
+
+    .form-card-note {
+      margin-top: 28px;
+      font-size: 11px;
+      color: rgba(245,240,232,0.25);
+      letter-spacing: 1px;
     }
 
     footer {
@@ -198,8 +281,9 @@
     }
 
     @media (max-width: 600px) {
-      .form-card { padding: 24px 16px 20px; }
+      .form-card { padding: 40px 20px 36px; }
       .ornament-line { width: 40px; }
+      .vote-btn { padding: 16px 32px; }
     }
   </style>
 </head>
@@ -237,15 +321,22 @@
   <div class="form-section">
     <div class="form-card">
       <span class="form-card-label">♛ Formulaire de vote</span>
-      <iframe
-        src="https://docs.google.com/forms/d/e/1FAIpQLSdwVJRup2ENkPa1EoWXMhcBZvyZi2_K0bPk0WmR2ikcJrKnfw/viewform?embedded=true"
-        height="1500"
-        frameborder="0"
-        marginheight="0"
-        marginwidth="0"
-        title="Vote Roi et Reine - Dîner Départemental 2026">
-        Chargement…
-      </iframe>
+      <span class="form-card-icon">🗳️</span>
+      <div class="form-card-title">Exprime ton vote</div>
+      <p class="form-card-desc">
+        Clique sur le bouton ci-dessous pour accéder au formulaire de vote.<br>
+        Simple, rapide, et compatible avec tous les appareils.
+      </p>
+      <a
+        href="https://docs.google.com/forms/d/e/1FAIpQLSdwVJRup2ENkPa1EoWXMhcBZvyZi2_K0bPk0WmR2ikcJrKnfw/viewform"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="vote-btn"
+      >
+        <span>Voter maintenant</span>
+        <span class="vote-btn-icon">→</span>
+      </a>
+      <p class="form-card-note">S'ouvre dans un nouvel onglet · Un seul vote par personne</p>
     </div>
   </div>
 
